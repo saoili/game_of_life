@@ -1,3 +1,7 @@
+from random import choice
+from time import sleep
+
+
 class GameOfLifeGrid(object):
 
     def __init__(self, width, height=None):
@@ -9,7 +13,7 @@ class GameOfLifeGrid(object):
         for x in xrange(width):
             for y in xrange(height):
                 self.grid[(x, y)] = 0
-        self.seed()
+        self.random_seed()
 
     def seed(self):
         self.grid[(1, 2)] = 1
@@ -18,6 +22,11 @@ class GameOfLifeGrid(object):
         self.grid[(2, 5)] = 1
         self.grid[(4, 3)] = 1
         self.grid[(4, 4)] = 1
+
+    def random_seed(self):
+        # making not-life slightly more likely
+        for key in self.grid:
+            self.grid[key] = choice((0, 0, 1))
 
     def basic_print(self):
         print "\n"
@@ -67,7 +76,9 @@ class GameOfLifeGrid(object):
 
 if __name__ == "__main__":
     g = GameOfLifeGrid(15, 13)
-    ticks = 2
+    ticks = 20
+    sleep_time = 1
     for i in xrange(ticks + 1):
+        sleep(sleep_time)
         g.basic_print()
         g.tick()
