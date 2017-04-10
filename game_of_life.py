@@ -13,7 +13,6 @@ class GameOfLife(object):
         for x in xrange(width):
             for y in xrange(height):
                 self.grid[(x, y)] = 0
-        self.random_seed()
 
     def seed(self):
         self.grid[(1, 2)] = 1
@@ -76,6 +75,7 @@ class GameOfLife(object):
 
 if __name__ == "__main__":
     g = GameOfLife(15, 13)
+    g.random_seed()
     ticks = 20
     sleep_time = 1
     for i in xrange(ticks + 1):
