@@ -2,7 +2,7 @@ from random import choice
 from time import sleep
 
 
-class GameOfLifeGrid(object):
+class GameOfLife(object):
 
     def __init__(self, width, height=None):
         if not height:
@@ -75,7 +75,7 @@ class GameOfLifeGrid(object):
 
 
 if __name__ == "__main__":
-    g = GameOfLifeGrid(15, 13)
+    g = GameOfLife(15, 13)
     ticks = 20
     sleep_time = 1
     for i in xrange(ticks + 1):
